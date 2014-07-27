@@ -1,0 +1,22 @@
+//
+// General layout for all pages
+//
+
+// global singularity
+@include add-grid(6);
+@include add-gutter(1/3);
+
+.grid {
+	max-width: 1024px;
+	margin: 0 auto;
+  padding: 0 20px;
+}
+
+@include breakpoint($tablet) {
+  %half-first {
+    @include grid-span(3, 1);
+  }
+  %half-last {
+    @include grid-span(3, 4);
+  }  
+}
