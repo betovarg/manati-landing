@@ -90,6 +90,7 @@ header {
 .flex-direction-nav {
   margin-top: -100px;
   padding-bottom: 20px;
+  position: relative;
   @extend .grid;
   li {
     list-style-type: none;
@@ -99,8 +100,14 @@ header {
       height: 27px;
       overflow: hidden;
       text-indent: 100%;
-      background: red;
+      background-image: url(../images/sprite.svg);
       display: inline-block;
+    }
+    .flex-prev {
+      background-position: -2px -40px;
+    }
+    .flex-next {
+      background-position: -3px -82px;
     }
   }
 }
