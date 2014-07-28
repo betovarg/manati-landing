@@ -113,6 +113,7 @@ header {
   margin: 44px 0;
 }
 
+.block-work {}
 .block-work .intro {
   border-top: solid 2px #E4F9F3;
   border-bottom: solid 2px #E4F9F3;
@@ -145,7 +146,7 @@ header {
 // work item
 .work-item {
   overflow: hidden;
-  margin-bottom: 150px;
+  margin-bottom: 110px;
   @include breakpoint($desktop) {
   .work-description {
       float: right;
@@ -167,7 +168,7 @@ header {
   p {
     @include font-size(16);
     margin-bottom: 20px;
-    color: #777;
+    color: #555;
   }
 }
 .work-description {
@@ -180,16 +181,93 @@ header {
 }
 .work-subtitle {
   @include font-size(22);
+  color: #6CA0A0;
+  font-weight: 400;
 }
 .work-tags {
   @include font-size(12);
-  color: #555;
+  color: #999;
   margin-bottom: 14px;
   display: block;
   text-transform: uppercase;
 }
 .work-cta {}
 
+// more works toggle
+.compressed {
+  max-height: 2000px;
+  overflow: hidden;
+}
+.hidden {
+  display: none !important;
+}
+.overlay {
+  height: 259px;
+  background: url(../images/overlay.png) repeat-x;
+  border-bottom: solid 2px #ccc;
+  position: relative;
+  margin-top: -200px;
+  z-index: 5;
+}
+.more-work {
+  cursor: pointer;
+  display: block;
+  padding: 15px;
+  width: 140px;
+  margin: -21px auto 0;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  color: #777;
+  text-align: right;
+  @include font-size(18);
+  @include border-radius(100px);
+  border: solid 2px #ccc;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  &:after {
+    content: '+';
+    position: absolute;
+    left: 9px;
+    top: 7px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    line-height: 24px;
+    text-align: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    @include font-size(30);
+    @include border-radius(100px);
+    background: #999;
+    color: #fff;
+  }
+  &:hover {
+    background: #ccc;
+    color: #fff;
+  }
+  &:hover:after {
+    background: #fff;
+    color: #ccc;
+  }
+}
+
+.block-clients {
+  clear: both;
+  overflow: hidden;
+  padding: 44px 0;
+  h2 {
+    color: #555;
+    width: 10%;
+    float: left;
+  }
+  .slides {
+    float: left;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 .block-community {
   overflow: hidden;
@@ -219,6 +297,11 @@ header {
     list-style-type: none;
     padding-left: 0;
   }
+  h4 {
+    color: #fff;
+    margin: 10px 0;
+    font-weight: 300; 
+  }
   @include breakpoint($mobile-only) {
     .first,.middle,.last {
       margin-bottom: 20px;
@@ -237,6 +320,20 @@ header {
   }
 }
 
+.cta-list {
+  .cta {
+    border: 0;
+    color: $orange;
+    @include font-size(18);
+    font-weight: 600;
+    padding-left: 20px;
+    background: url(../images/sprite.svg) -1px -169px no-repeat;
+  }
+}
+.badge {
+  max-width: 155px;
+  text-indent: center;
+}
 // block blog
 
 .block-blog {
@@ -247,6 +344,9 @@ header {
     color: #A7C6C1;
     border-bottom: solid 2px #A7C6C1;
     padding-bottom:44px;
+  }
+  h3 {
+    @include font-size(28);
   }
   ul {
     padding: 0 0 0 20px;
@@ -260,6 +360,9 @@ header {
   }
   .last {
     @extend %half-last;
+    h3 {
+      @include font-size(22);
+    }
   }
 }
 
@@ -267,6 +370,23 @@ header {
 .block-contact {
   overflow: hidden;
   padding: 44px 0;
+  color: #666;
+  h2 {
+    @include font-size(32);
+  }
+  p {
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+  .phone {
+    @include font-size(24);
+    color: #344253;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    .number {
+      color: #1f8b75;
+    }
+  }
   .first {
     @extend %half-first;
   }
@@ -275,11 +395,54 @@ header {
   } 
 }
 
+.social {
+  padding: 0;
+  margin-top: 50px;
+  li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: top;
+    font-size: 18px;
+    &.menu-title {
+      text-indent: 0;
+      width: auto;
+      background-image: none;
+      line-height: 36px;
+    }
+    .social-icon {
+      display: inline-block;
+      width: 37px;
+      height: 37px;
+      vertical-align: top;
+      text-indent: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background-image: url(../images/sprite.svg);
+    }
+    .facebook {
+      background-position: -1px -280px;
+    }
+    .twitter {
+      background-position: -1px -325px;
+    }
+    .linked-in {
+      background-position: -1px -369px;
+    }
+    .drupal {
+      background-position: -1px -414px;
+    }
+  }
+}
+
 .footer {
   overflow: hidden;
   padding: 44px 0 0;
   background: #BBEFE0;
   text-align: center;
+  p {
+    @include font-size(18);
+  }
   .first {
     @extend %half-first;
     margin-bottom: 44px;
@@ -291,16 +454,23 @@ header {
   .badge {
     @include font-size(24);
     border: solid 3px $blue;
+    font-weight: 600;
+    padding: 20px 30px;
+    @include breakpoint($desktop) {
+      margin: 45px 0;
+    }
   }
   .closing {
     clear: both;
     overflow: hidden;
     background: $blue;
     color: $light-blue;
-    @include font-size(14);
-    padding: 10px 0;
     b {
       display: block;
+      font-weight: normal;
+      @include font-size(15);
+      padding: 20px 0;
+      letter-spacing: 2px;
     }
   }
 }
