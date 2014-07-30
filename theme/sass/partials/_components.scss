@@ -10,16 +10,36 @@
   @include border-radius(10px);
   @include font-size(16);
   border: solid 2px $blue;
+  background-image: url(../images/);
 }
 
 // header
 header {
   background: #BBEFE0;
   overflow: hidden;
-  padding: 37px;
+  @include breakpoint($tablet) {
+    padding: 37px;
+  }
+  padding: 15px;
   .logo {
-    float: left;
     max-width: 173px;
+    text-align: center;
+    @include breakpoint($tablet) {
+      width: 110px; 
+      float: left;
+    }
+    @include breakpoint($desktop) {
+      width: auto; 
+    }
+    @include breakpoint($mobile-only) {
+      display: block;
+      max-width: none;
+      width: 100%;
+      margin-bottom: 20px;
+      img {
+        max-width: 160px;
+      }
+    }
   }
 }
 
@@ -27,28 +47,54 @@ header {
   .menu {
     margin: 0;
     padding: 0;
-    float: right;
+    @include breakpoint($tablet) {
+      float: right;
+    }
   }
   li {
-    display: inline-block;
     list-style-type: none;
-    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+    text-align: center;
+    @include breakpoint($tablet) {
+      display: inline-block;
+      margin-right: 15px;
+      text-align: left;
+    }
   }
   a {
     @include font-size(19);
     color: $blue;
-    display: inline-block;
-    padding: 8px 15px;
-    &:hover {
-      background: #E4F9F3;
-      @include border-radius(10px);
+    margin-bottom: 15px;
+    display: block;
+    @include breakpoint($tablet) {
+      padding: 4px 7px;
+      @include font-size(15);
+      display: inline-block;
+    }
+    @include breakpoint($desktop) {
+      padding: 8px 15px;
+      @include font-size(19);
+      &:hover {
+        background: #E4F9F3;
+        @include border-radius(10px);
+      }
     }
     &.contact {
       @extend .cta;
       margin-top: -2px;
-      &:hover {
+      @include breakpoint($tablet) {
+        padding: 5px 7px;
+        @include font-size(15);
+      }
+      @include breakpoint($desktop) {
+        @include font-size(19);
+        padding: 8px 12px;
+        &:hover {
         background: $blue;
         color: #fff;
+      }
       }
     }
   }
@@ -63,34 +109,66 @@ header {
   }
 }
 .slide-container {
-  padding: 100px 20px 60px;
+  @include breakpoint($desktop) {
+    padding: 70px 20px 60px;
+  }
+  padding: 20px 20px 60px;
   overflow: hidden;
   @extend .grid;
   .title {
-    @include font-size(40);
-    margin-bottom: 30px;
+    @include breakpoint($tablet) {
+      @include font-size(40);
+      line-height: 1.2;
+    }
+    @include font-size(29);
+    line-height: 1.2;
+    margin-bottom: 20px;
   }
   p {
+  @include breakpoint($tablet) {
    @include font-size(28);
    margin-bottom: 35px;
   }
+   @include font-size(20);
+   margin-bottom: 20px;
+  }
   .cta {
-    @include font-size(19);
+    @include breakpoint($tablet) {
+      @include font-size(19);
+      margin-bottom: 80px;
+    }
+    @include breakpoint($desktop) {
+      margin-bottom: 20px;
+    }
+    @include font-size(17);
+    font-weight: bold;
+    line-height: 1.2;
   }
 }
 .slide-content {
-  width: 55%;
-  float: left;
+  @include breakpoint($tablet) {
+    width: 55%;
+    float: left;
+  }
 }
 .slide-image {
-  float: right;
-  width: 40%;
-  margin-top: -10px;
+  @include breakpoint($tablet) {
+    float: right;
+    width: 40%;
+    margin-top: -10px;
+    padding: 0;
+  }
+  padding: 15px 45px;
 }
 .flex-direction-nav {
-  margin-top: -100px;
+  @include breakpoint($tablet) {
+    margin-top: -100px;
+    left: auto;
+  }
+  margin-top: -80px;
   padding-bottom: 20px;
   position: relative;
+  left: 40%;
   @extend .grid;
   li {
     list-style-type: none;
@@ -115,7 +193,7 @@ header {
 // blocks
 .section-title {
   text-align: center;
-  color: #BCDDD7;
+  color: #7BBDB1;
   @include font-size(28);
   margin: 44px 0;
 }
@@ -162,6 +240,7 @@ header {
     .work-image {
       float: left;
       width: 44%;
+      margin-bottom: 0;
     }
     &.reversed {
       .work-description {
@@ -171,6 +250,9 @@ header {
         float: right;
       }
     }
+  }
+  .work-image {
+    margin-bottom: 15px;
   }
   p {
     @include font-size(16);
@@ -182,12 +264,18 @@ header {
   color: $blue;
 }
 .work-title {
-  @include font-size(36);
+  @include breakpoint($tablet) {
+    @include font-size(36);
+  }
+  @include font-size(24);
   margin-bottom: 10px;
   color: #25567f;
 }
 .work-subtitle {
-  @include font-size(22);
+  @include breakpoint($tablet) {
+    @include font-size(22);
+  }
+  @include font-size(18);
   color: #6CA0A0;
   font-weight: 400;
 }
@@ -266,13 +354,17 @@ header {
   h2 {
     color: #555;
     width: 10%;
-    float: left;
+    @include breakpoint($tablet) {
+      float: left;
+    }
   }
   .slides {
-    float: left;
-    width: 80%;
     margin: 0;
     padding: 0;
+    @include breakpoint($tablet) {
+      width: 80%;
+      float: left;
+    }
   }
 }
 
@@ -283,6 +375,10 @@ header {
   h2.section-title {
     color: #fff;
     margin: 0 0 80px;
+    text-align: left;
+    @include breakpoint($desktop) {
+      text-align: center;
+    }
   }
   h2 {
     color: $orange;
@@ -311,7 +407,10 @@ header {
   }
   @include breakpoint($mobile-only) {
     .first,.middle,.last {
-      margin-bottom: 20px;
+      @include breakpoint($tablet) {
+        margin-bottom: 20px;
+      }
+      margin-bottom: 40px;
     }
   }
   @include breakpoint($desktop) {
@@ -463,6 +562,7 @@ header {
     border: solid 3px $blue;
     font-weight: 600;
     padding: 20px 30px;
+    color: $blue;
     @include breakpoint($desktop) {
       margin: 45px 0;
     }
