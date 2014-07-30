@@ -24,17 +24,21 @@
     background-image: url(../images/sprite.svg);
     background-position: -3px -140px;
   }
-  
 }
 
 // header
 header {
   background: #BBEFE0;
   overflow: hidden;
+  @include breakpoint($mobile-only) {
+    padding: 20px 0 0;
+    .grid {
+      padding: 0;
+    }
+  }
   @include breakpoint($tablet) {
     padding: 37px;
   }
-  padding: 15px;
   .logo {
     max-width: 173px;
     text-align: center;
@@ -70,7 +74,13 @@ header {
     &:last-child {
       margin-right: 0;
     }
-    text-align: center;
+    @include breakpoint($mobile-only) {
+      border-top: solid 1px #afcacb;
+      &:last-child {
+        border-top: 0;
+        padding: 5px 0 0;
+      }
+    }
     @include breakpoint($tablet) {
       display: inline-block;
       margin-right: 15px;
@@ -80,8 +90,10 @@ header {
   a {
     @include font-size(19);
     color: $blue;
-    margin-bottom: 15px;
     display: block;
+    @include breakpoint($mobile-only) {
+      padding: 10px 15px;
+    }
     @include breakpoint($tablet) {
       padding: 4px 7px;
       @include font-size(15);
@@ -99,6 +111,19 @@ header {
       @extend .cta;
       font-weight: normal;
       margin-top: -2px;
+      @include breakpoint($mobile-only) {
+        display: block;
+        border-right: 0;
+        border-left: 0;
+        border-width: 1px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        @include border-radius(0);
+        @include font-size(19);
+        &:after {
+          top: 18px;
+        }
+      }
       @include breakpoint($tablet) {
         padding: 5px 30px 5px 7px;
         @include font-size(15);
@@ -168,7 +193,7 @@ header {
     font-weight: bold;
     line-height: 1.2;
     &:after {
-      top: 10px;
+      top: 11px;
     }
   }
 }
@@ -322,6 +347,9 @@ header {
 .compressed {
   max-height: 2000px;
   overflow: hidden;
+  @include breakpoint($mobile-only){
+    max-height: 3000px;
+  }
 }
 .hidden {
   display: none !important;
@@ -533,6 +561,10 @@ header {
       color: #1f8b75;
     }
   }
+  a {
+    color: $blue;
+    font-weight: bold;
+  }
   .first {
     @extend %half-first;
     @include breakpoint($mobile-only) {
@@ -543,6 +575,13 @@ header {
   }
   .last {
     @extend %half-last;
+    p {
+      margin-bottom: 20px;
+    }
+    b {
+      text-decoration: underline;
+      color: #344253
+    }
   } 
 }
 
