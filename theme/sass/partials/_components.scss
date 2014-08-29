@@ -430,6 +430,15 @@ header {
   overflow: hidden;
   background: #412A45;
   padding: 44px 0;
+  background-attachment: fixed;
+  @include breakpoint(0 959px) {
+    background-image: url(../images/textura-movil.jpg);
+    background-size: 488px 392px;
+  }
+  @include breakpoint($desktop) {
+    background-image: url(../images/textura-desk.jpg);
+    background-size: 850px 690px;
+  }
   h2.section-title {
     color: #fff;
     margin: 0 0 80px;
